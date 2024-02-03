@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #332941;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #F8E559;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="url"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d1c1d7;
+            border-radius: 4px;
+            outline: none;
+        }
+        input[type="url"]:focus {
+            border-color: #a79cb8;
+        }
+        button {
+            padding: 10px;
+            background-color: #864AF9;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #9cc4c4;
+        }
+        .center-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically if needed */
+            height: 50px; /* Adjust height as needed */
+            margin-top: 20px; /* Space above the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="urlShortenerForm">
+            <input type="url" name="url" placeholder="Enter URL to shorten" required>
+            <button type="submit" hx-post="/short" hx-target="#short" hx-swap="innerHTML">Shorten URL</button>
+        </form>
+        <div class="center-container" id="short"></div>
+    </div>
+</body>
+</html>
